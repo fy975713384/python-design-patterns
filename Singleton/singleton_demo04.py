@@ -10,7 +10,8 @@ class MetaSingleton(type):
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instance:
-            cls._instance[cls] = super(MetaSingleton, cls).__call__(*args, **kwargs)
+            cls._instance[cls] = super(
+                MetaSingleton, cls).__call__(*args, **kwargs)
         return cls._instance[cls]
 
 
@@ -20,4 +21,4 @@ class Logger(metaclass=MetaSingleton):
 
 logger1 = Logger()
 logger2 = Logger()
-print(logger1, '\n', logger2)
+print(logger1, logger2, sep='\n')
