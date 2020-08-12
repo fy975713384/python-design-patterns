@@ -1,29 +1,25 @@
 # -*- coding: utf-8 -*-
 
 """
-Monostate （单态）模式
+基于元类的单例模式
 """
 
 
-class Borg:
-    __shared_state = {}
+# metaclass 必须继承 type
+class MetaSingleton(type):
+    _instance = {}
 
-    def __new__(cls, *args, **kwargs):
-        obj = super(Borg, cls).__new__(cls, *args, **kwargs)
-        obj.__dict__ = cls.__shared_state
-        return obj
-
-    def __int__(self):
-        self.x = 0
-        self.y = 0
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instance:
+            cls._instance[cls] = super(
+                MetaSingleton, cls).__call__(*args, **kwargs)
+        return cls._instance[cls]
 
 
-b = Borg()
-b1 = Borg()
-b.x = 1
-b1.y = 2
+class Logger(metaclass=MetaSingleton):
+    pass
 
-print(f'Borg Object "b": {b}')
-print(f'Borg Object "b1": {b1}')
-print(f'Object State "b": {b.__dict__}')
-print(f'Object State "b1": {b1.__dict__}')
+
+logger1 = Logger()
+logger2 = Logger()
+print(logger1, logger2, sep='\n')
