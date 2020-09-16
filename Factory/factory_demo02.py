@@ -74,4 +74,4 @@ if __name__ == '__main__':
     profile_type = input("Which Profile you'd like to create? [LinkedIn or Facebook]\n")
     profile = eval(profile_type)()
     print(f'Creating Profile.. {type(profile).__name__}')
-    print(f'Profile has sections --', profile.get_sections())
+    print(f'Profile has sections -- {profile.get_sections()}')
