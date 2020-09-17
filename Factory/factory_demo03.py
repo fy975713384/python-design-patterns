@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+"""
+抽象工厂模式
+"""
+
 from abc import ABCMeta, abstractmethod
 
 
@@ -61,7 +65,8 @@ class MexicanVegPizza(VegPizza):
 # ConcreteProduct
 class ChickenPizza(NonVegPizza):
     def serve(self, veg_pizza):
-        print(f'{type(self).__name__} is served with Chicken on {type(veg_pizza).__name__}')
+        print(
+            f'{type(self).__name__} is served with Chicken on {type(veg_pizza).__name__}')
 
 
 # ConcreteProduct
