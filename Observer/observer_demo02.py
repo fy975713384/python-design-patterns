@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 """
 观察者模式
 """
@@ -42,7 +41,7 @@ class Subscriber(metaclass=ABCMeta):
 
 
 # ConcreteObserver
-class SMSSubscriber:
+class SMSSubscriber(Subscriber):
     def __init__(self, publisher):
         self.publisher = publisher
         self.publisher.attach(self)
@@ -52,7 +51,7 @@ class SMSSubscriber:
 
 
 # ConcreteObserver
-class EmailSubscriber:
+class EmailSubscriber(Subscriber):
     def __init__(self, publisher):
         self.publisher = publisher
         self.publisher.attach(self)
@@ -62,7 +61,7 @@ class EmailSubscriber:
 
 
 # ConcreteObserver
-class AnyOtherSubscriber:
+class AnyOtherSubscriber(Subscriber):
     def __init__(self, publisher):
         self.publisher = publisher
         self.publisher.attach(self)
