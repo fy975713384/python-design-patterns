@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
-
 """
 命令模式
 """
 
 
 class Wizard:
-
     def __init__(self, src, root_dir):
         self.choices = []
         self.src = src
